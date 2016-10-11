@@ -1,0 +1,5 @@
+version: "Apple Swift version 3.0 (swiftlang-800.0.46.2 clang-800.0.38)"
+options: "a9e471e9b5da54af109e925179fc6992"
+build_time: [529530232, 945135000]
+inputs:
+  "/Users/karemorstol/Programming/Executables/linuxmain-generator/Sources/main.swift": [529530226, 0]

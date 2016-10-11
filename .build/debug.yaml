@@ -1,0 +1,47 @@
+client:
+  name: swift-build
+tools: {}
+targets:
+  "test": ["<SwiftShell.module>","<linuxmain-generator.module>","<linuxmain-generator.exe>"]
+  "main": ["<SwiftShell.module>","<linuxmain-generator.module>","<linuxmain-generator.exe>"]
+default: "main"
+commands: 
+  "<SwiftShell.module>":
+    tool: swift-compiler
+    executable: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    module-name: "SwiftShell"
+    module-output-path: "/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/SwiftShell.swiftmodule"
+    inputs: []
+    outputs: ["<SwiftShell.module>","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/SwiftShell.build/Bash.swift.o","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/SwiftShell.build/Command.swift.o","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/SwiftShell.build/Context.swift.o","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/SwiftShell.build/FileHandle.swift.o","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/SwiftShell.build/Files.swift.o","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/SwiftShell.build/Stream.swift.o","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/SwiftShell.build/String.swift.o","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/SwiftShell.build/General/Array.swift.o","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/SwiftShell.build/General/Lazy-split.swift.o"]
+    import-paths: ["/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug"]
+    temps-path: "/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/SwiftShell.build"
+    objects: ["/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/SwiftShell.build/Bash.swift.o","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/SwiftShell.build/Command.swift.o","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/SwiftShell.build/Context.swift.o","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/SwiftShell.build/FileHandle.swift.o","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/SwiftShell.build/Files.swift.o","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/SwiftShell.build/Stream.swift.o","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/SwiftShell.build/String.swift.o","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/SwiftShell.build/General/Array.swift.o","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/SwiftShell.build/General/Lazy-split.swift.o"]
+    other-args: ["-j8","-D","SWIFT_PACKAGE","-Onone","-g","-enable-testing","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-target","x86_64-apple-macosx10.10","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk","-module-cache-path","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/ModuleCache"]
+    sources: ["/Users/karemorstol/Programming/Executables/linuxmain-generator/Packages/SwiftShell-3.0.0-beta.3/Sources/SwiftShell/Bash.swift","/Users/karemorstol/Programming/Executables/linuxmain-generator/Packages/SwiftShell-3.0.0-beta.3/Sources/SwiftShell/Command.swift","/Users/karemorstol/Programming/Executables/linuxmain-generator/Packages/SwiftShell-3.0.0-beta.3/Sources/SwiftShell/Context.swift","/Users/karemorstol/Programming/Executables/linuxmain-generator/Packages/SwiftShell-3.0.0-beta.3/Sources/SwiftShell/FileHandle.swift","/Users/karemorstol/Programming/Executables/linuxmain-generator/Packages/SwiftShell-3.0.0-beta.3/Sources/SwiftShell/Files.swift","/Users/karemorstol/Programming/Executables/linuxmain-generator/Packages/SwiftShell-3.0.0-beta.3/Sources/SwiftShell/Stream.swift","/Users/karemorstol/Programming/Executables/linuxmain-generator/Packages/SwiftShell-3.0.0-beta.3/Sources/SwiftShell/String.swift","/Users/karemorstol/Programming/Executables/linuxmain-generator/Packages/SwiftShell-3.0.0-beta.3/Sources/SwiftShell/General/Array.swift","/Users/karemorstol/Programming/Executables/linuxmain-generator/Packages/SwiftShell-3.0.0-beta.3/Sources/SwiftShell/General/Lazy-split.swift"]
+    is-library: true
+    enable-whole-module-optimization: false
+    num-threads: "8"
+
+  "<linuxmain-generator.module>":
+    tool: swift-compiler
+    executable: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    module-name: "linuxmain_generator"
+    module-output-path: "/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/linuxmain_generator.swiftmodule"
+    inputs: ["<SwiftShell.module>"]
+    outputs: ["<linuxmain-generator.module>","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/linuxmain_generator.build/main.swift.o"]
+    import-paths: ["/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug"]
+    temps-path: "/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/linuxmain_generator.build"
+    objects: ["/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/linuxmain_generator.build/main.swift.o"]
+    other-args: ["-j8","-D","SWIFT_PACKAGE","-Onone","-g","-enable-testing","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-target","x86_64-apple-macosx10.10","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk","-module-cache-path","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/ModuleCache"]
+    sources: ["/Users/karemorstol/Programming/Executables/linuxmain-generator/Sources/main.swift"]
+    is-library: false
+    enable-whole-module-optimization: false
+    num-threads: "8"
+
+  "<linuxmain-generator.exe>":
+    tool: shell
+    description: "Linking ./.build/debug/linuxmain-generator"
+    inputs: ["/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/linuxmain_generator.build/main.swift.o","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/SwiftShell.build/Bash.swift.o","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/SwiftShell.build/Command.swift.o","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/SwiftShell.build/Context.swift.o","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/SwiftShell.build/FileHandle.swift.o","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/SwiftShell.build/Files.swift.o","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/SwiftShell.build/Stream.swift.o","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/SwiftShell.build/String.swift.o","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/SwiftShell.build/General/Array.swift.o","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/SwiftShell.build/General/Lazy-split.swift.o"]
+    outputs: ["<linuxmain-generator.exe>","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/linuxmain-generator"]
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-target","x86_64-apple-macosx10.10","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk","-g","-L/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug","-o","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/linuxmain-generator","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-emit-executable","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/linuxmain_generator.build/main.swift.o","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/SwiftShell.build/Bash.swift.o","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/SwiftShell.build/Command.swift.o","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/SwiftShell.build/Context.swift.o","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/SwiftShell.build/FileHandle.swift.o","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/SwiftShell.build/Files.swift.o","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/SwiftShell.build/Stream.swift.o","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/SwiftShell.build/String.swift.o","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/SwiftShell.build/General/Array.swift.o","/Users/karemorstol/Programming/Executables/linuxmain-generator/.build/debug/SwiftShell.build/General/Lazy-split.swift.o"]
+

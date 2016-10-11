@@ -1,0 +1,13 @@
+version: "Apple Swift version 3.0 (swiftlang-800.0.46.2 clang-800.0.38)"
+options: "4ed052a71550a8ebdcf6503c73213cd5"
+build_time: [529530228, 572108000]
+inputs:
+  "/Users/karemorstol/Programming/Executables/linuxmain-generator/Packages/SwiftShell-3.0.0-beta.3/Sources/SwiftShell/Bash.swift": [529530228, 0]
+  "/Users/karemorstol/Programming/Executables/linuxmain-generator/Packages/SwiftShell-3.0.0-beta.3/Sources/SwiftShell/Command.swift": [529530228, 0]
+  "/Users/karemorstol/Programming/Executables/linuxmain-generator/Packages/SwiftShell-3.0.0-beta.3/Sources/SwiftShell/Context.swift": [529530228, 0]
+  "/Users/karemorstol/Programming/Executables/linuxmain-generator/Packages/SwiftShell-3.0.0-beta.3/Sources/SwiftShell/FileHandle.swift": [529530228, 0]
+  "/Users/karemorstol/Programming/Executables/linuxmain-generator/Packages/SwiftShell-3.0.0-beta.3/Sources/SwiftShell/Files.swift": [529530228, 0]
+  "/Users/karemorstol/Programming/Executables/linuxmain-generator/Packages/SwiftShell-3.0.0-beta.3/Sources/SwiftShell/Stream.swift": [529530228, 0]
+  "/Users/karemorstol/Programming/Executables/linuxmain-generator/Packages/SwiftShell-3.0.0-beta.3/Sources/SwiftShell/String.swift": [529530228, 0]
+  "/Users/karemorstol/Programming/Executables/linuxmain-generator/Packages/SwiftShell-3.0.0-beta.3/Sources/SwiftShell/General/Array.swift": [529530228, 0]
+  "/Users/karemorstol/Programming/Executables/linuxmain-generator/Packages/SwiftShell-3.0.0-beta.3/Sources/SwiftShell/General/Lazy-split.swift": [529530228, 0]
