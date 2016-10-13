@@ -2,6 +2,8 @@
 import SwiftShell
 import Foundation
 
+let indentation = "\t"
+
 extension String {
 	func subString(between: String, and: String) -> String? {
 		guard let start = range(of: between)?.upperBound,
@@ -11,12 +13,10 @@ extension String {
 	}
 }
 
-typealias TestFunctions = (classname: String, funcs: [String])
-let indentation = "\t"
+typealias TestClass = (classname: String, funcs: [String])
 
-
-func getTestFunctions(_ input: ReadableStream) -> [TestFunctions] {
-	var result = [TestFunctions]()
+func getTestClasses(_ input: ReadableStream) -> [TestClass] {
+	var result = [TestClass]()
 	for line in input.lines() {
 		if line.contains("XCTestCase"),
 			let classname = line.subString(between: "class", and: ":")?.trimmingCharacters(in: .whitespaces) {
@@ -34,10 +34,10 @@ func getTestFunctions(_ input: ReadableStream) -> [TestFunctions] {
 	return result
 }
 
-func makeAllTests(_ testfunctions: TestFunctions) -> String {
-	var result = "\nextension " + testfunctions.classname + " {\n"
+func makeAllTests(_ testclass: TestClass) -> String {
+	var result = "\nextension " + testclass.classname + " {\n"
 	result += indentation + "static var allTests = [\n"
-	result += testfunctions.funcs.map { testfunc in
+	result += testclass.funcs.map { testfunc in
 		indentation + indentation + "(\"\(testfunc)\", \(testfunc)),\n"
 		}.joined()
 	result += indentation + indentation + "]\n"
@@ -45,10 +45,47 @@ func makeAllTests(_ testfunctions: TestFunctions) -> String {
 	return result
 }
 
+func addAllTests(tofile path: String) throws -> [String] {
+	let testclasses = getTestClasses(try open(path))
+	guard !testclasses.isEmpty else { return [] }
+	let file = try open(forWriting: path)
+	testclasses.map(makeAllTests).forEach(file.write)
+	return testclasses.map {$0.classname}
+}
+
+extension ReadableStream {
+	func list() -> [String] {
+		let result = Array(lines())
+		return (result.last ?? " ").isEmpty ? Array(result.dropLast()) : result
+	}
+}
+
+func makeLinuxMainDotSwift(_ classnames: [String]) throws {
+	var result = "\nimport XCTest\n\n"
+	result += runAsync(bash: "cd Tests && ls -d */").stdout.list().map {dir in "import " + String(dir.characters.dropLast()) + "\n"}.joined()
+	result += "\nlet tests: [XCTestCaseEntry] = [\n"
+	result += classnames.map { indentation + "testCase(\($0).allTests),\n" }.joined()
+	result += indentation + "]\n\n"
+	result += "XCTMain(tests)\n"
+	let file = try open(forWriting: "Tests/LinuxMain.swift")
+	file.write(result)
+}
+
+//
+guard Files.fileExists(atPath: "Package.swift") else { exit(errormessage: "Not in a Swift Package directory: Package.swift not found.") }
+guard	!Files.fileExists(atPath: "Tests/LinuxMain.swift") else { exit(errormessage: "Tests/LinuxMain.swift already exists.")}
+
+do {
+	let testfiles = runAsync("find", "Tests", "-name", "*.swift").stdout.list()
+	guard !testfiles.isEmpty else { exit(errormessage: "Could not find any .swift files in \"Tests/\".") }
+	let classnames = try testfiles.flatMap(addAllTests)
+	try makeLinuxMainDotSwift(classnames)
+} catch {
+	exit(error)
+}
+
+/*
 guard let swiftfile = try main.arguments.first.map ({try open($0)}) else {
 	exit(errormessage: "Missing argument for swift file")
 }
-
-print(makeAllTests(getTestFunctions(swiftfile).last!))
-
-
+*/
