@@ -36,7 +36,7 @@ func getTestClasses(_ input: ReadableStream) -> [TestClass] {
 
 func makeAllTests(_ testclass: TestClass) -> String {
 	var result = "\nextension " + testclass.classname + " {\n"
-	result += indentation + "static var allTests = [\n"
+	result += indentation + "public static var allTests = [\n"
 	result += testclass.funcs.map { testfunc in
 		indentation + indentation + "(\"\(testfunc)\", \(testfunc)),\n"
 		}.joined()
