@@ -47,16 +47,18 @@ func makeAllTests(_ testclass: TestClass) -> String {
 
 func addAllTests(tofile path: String) throws -> [String] {
 	let testclasses = getTestClasses(try open(path))
-	guard !testclasses.isEmpty else { return [] }
+	guard !testclasses.isEmpty else { print("  \(path): Skipping, no test classes found."); return [] }
 	let file = try open(forWriting: path)
 	testclasses.map(makeAllTests).forEach(file.write)
-	return testclasses.map {$0.classname}
+	let names = testclasses.map {$0.classname}
+	print("+ \(path): Added 'allTests' to \(names.joined(separator: ", ")).")
+	return names
 }
 
 extension ReadableStream {
 	func list() -> [String] {
 		let result = Array(lines())
-		return (result.last ?? " ").isEmpty ? Array(result.dropLast()) : result
+		return (result.last?.isEmpty ?? false) ? Array(result.dropLast()) : result
 	}
 }
 
@@ -69,6 +71,7 @@ func makeLinuxMainDotSwift(_ classnames: [String]) throws {
 	result += "XCTMain(tests)\n"
 	let file = try open(forWriting: "Tests/LinuxMain.swift")
 	file.write(result)
+	print("+ Tests/LinuxMain.swift")
 }
 
 //
