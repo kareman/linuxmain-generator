@@ -99,7 +99,7 @@
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -107,7 +107,6 @@
 				OBJ_21 /* Tests */,
 				OBJ_22 /* Products */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_7 /* Sources */ = {
@@ -132,7 +131,7 @@
 				OBJ_16 /* General */,
 			);
 			name = SwiftShell;
-			path = "Packages/SwiftShell-3.0.0-beta.5/Sources/SwiftShell";
+			path = "Packages/SwiftShell-3.0.0-beta.6/Sources/SwiftShell";
 			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
@@ -186,7 +185,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_22 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
