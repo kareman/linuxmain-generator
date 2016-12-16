@@ -2,6 +2,7 @@
 import SwiftShell
 import Foundation
 import Moderator
+import FileSmith
 
 let indentation = "\t"
 
@@ -16,7 +17,7 @@ extension String {
 
 typealias TestClass = (classname: String, funcs: [String])
 
-func getTestClasses(_ input: ReadableStream) -> [TestClass] {
+func getTestClasses(_ input: File) -> [TestClass] {
 	var result = [TestClass]()
 	for line in input.lines() {
 		if line.contains("XCTestCase"),
@@ -46,6 +47,18 @@ func makeAllTests(_ testclass: TestClass) -> String {
 	return result
 }
 
+func addAllTests(tofile path: FilePath) throws -> [String] {
+	let file = try path.edit()
+	let testclasses = getTestClasses(file)
+	guard !testclasses.isEmpty else { print("  \(path): Skipping, no test classes found."); return [] }
+
+	testclasses.map(makeAllTests).forEach(file.write)
+	let names = testclasses.map {$0.classname}
+	print("+ \(path): Added 'allTests' to \(names.joined(separator: ", ")).")
+	return names
+}
+
+/*
 func addAllTests(tofile path: String) throws -> [String] {
 	let testclasses = getTestClasses(try open(path))
 	guard !testclasses.isEmpty else { print("  \(path): Skipping, no test classes found."); return [] }
@@ -55,6 +68,7 @@ func addAllTests(tofile path: String) throws -> [String] {
 	print("+ \(path): Added 'allTests' to \(names.joined(separator: ", ")).")
 	return names
 }
+*/
 
 extension ReadableStream {
 	func list() -> [String] {
@@ -64,8 +78,26 @@ extension ReadableStream {
 }
 
 func makeLinuxMainDotSwift(_ classnames: [String]) throws {
+	let testdir = try Directory(open: "Tests")
+	let linuxmain = try testdir.add(file:"LinuxMain.swift", ifExists: .replace) // File
+	let testdirs = testdir.directories()
+
 	var result = "\nimport XCTest\n\n"
-	result += runAsync(bash: "cd Tests && ls -d */").stdout.list().map {dir in
+	result += testdirs.map {dir in
+		"@testable import \(dir.name) \n"}.joined()
+	result += "\nlet tests: [XCTestCaseEntry] = [\n"
+	result += classnames.map { indentation + "testCase(\($0).allTests),\n" }.joined()
+	result += indentation + "]\n\n"
+	result += "XCTMain(tests)\n"
+
+	linuxmain.write(result)
+	print("+ Tests/LinuxMain.swift")
+}
+
+/*
+func makeLinuxMainDotSwift(_ classnames: [String]) throws {
+	var result = "\nimport XCTest\n\n"
+	result += runAsync(bash: "cd Tests && ls -d *).stdout.list().map {dir in
 		"import " + String(dir.characters.dropLast()) + "\n"}.joined()
 	result += "\nlet tests: [XCTestCaseEntry] = [\n"
 	result += classnames.map { indentation + "testCase(\($0).allTests),\n" }.joined()
@@ -75,12 +107,13 @@ func makeLinuxMainDotSwift(_ classnames: [String]) throws {
 	file.write(result)
 	print("+ Tests/LinuxMain.swift")
 }
+*/
 
 let arguments = Moderator()
-let overwrite = arguments.add(.option("o","overwrite", description: "Replace /Tests/LinuxMain.swift if it already exists."))
+let overwrite = arguments.add(.option("o","overwrite", description: "Replace Tests/LinuxMain.swift if it already exists."))
 let dryrun = arguments.add(.option("d","dryrun", description: "Show what will happen without changing any files."))
 let projectdir = arguments.add(Argument<String?>
-	.singleArgument(name: "directory", description: "The Swift project root directory")
+	.singleArgument(name: "directory", description: "The project root directory")
 	.default("./")
 	.map { (folder:String) -> String in
 		let folder = URL(fileURLWithPath: folder, isDirectory: true)
@@ -100,8 +133,8 @@ do {
 	try arguments.parse()
 	main.currentdirectory = projectdir.value
 
-	let testfiles = runAsync("find", "Tests", "-name", "*.swift").stdout.list()
-	guard !testfiles.isEmpty else { exit(errormessage: "Could not find any .swift files in \"Tests/\".") }
+	let testfiles = runAsync("find", "Tests", "-name", "*.swift").stdout.list().map(FilePath.init(_:))
+	guard !testfiles.isEmpty else { exit(errormessage: "Could not find any .swift files under \"Tests/*/\".") }
 	let classnames = try testfiles.flatMap(addAllTests)
 	try makeLinuxMainDotSwift(classnames)
 } catch {

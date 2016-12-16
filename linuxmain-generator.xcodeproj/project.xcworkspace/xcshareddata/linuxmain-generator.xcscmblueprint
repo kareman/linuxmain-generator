@@ -3,11 +3,13 @@
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "8524CD90B0B06309637E46DA8633449AD5125738" : 9223372036854775807,
     "BF7C67668F4701C0AE5156F0E6F0CA70C1C6C61F" : 9223372036854775807,
     "F902FE9848B78AE6D05B4F4E71AB47614E345506" : 9223372036854775807
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "EC3422A9-1CE8-4F81-A38E-38CB38B26F06",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "8524CD90B0B06309637E46DA8633449AD5125738" : "linuxmain-generator\/Packages\/FileSmith-0.1.0-alpha\/",
     "BF7C67668F4701C0AE5156F0E6F0CA70C1C6C61F" : "linuxmain-generator\/Packages\/SwiftShell-3.0.0-beta.7\/",
     "F902FE9848B78AE6D05B4F4E71AB47614E345506" : "linuxmain-generator\/Packages\/Moderator-0.4.0-beta.1\/"
   },
@@ -15,6 +17,11 @@
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
   "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "linuxmain-generator.xcodeproj",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/karemorstol\/Programming\/Libraries\/FileSmith\/FileSmith",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8524CD90B0B06309637E46DA8633449AD5125738"
+    },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/karemorstol\/Programming\/SwiftShell\/SwiftShell3",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
