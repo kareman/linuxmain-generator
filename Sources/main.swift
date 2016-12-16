@@ -58,18 +58,6 @@ func addAllTests(tofile path: FilePath) throws -> [String] {
 	return names
 }
 
-/*
-func addAllTests(tofile path: String) throws -> [String] {
-	let testclasses = getTestClasses(try open(path))
-	guard !testclasses.isEmpty else { print("  \(path): Skipping, no test classes found."); return [] }
-	let file = try open(forWriting: path)
-	testclasses.map(makeAllTests).forEach(file.write)
-	let names = testclasses.map {$0.classname}
-	print("+ \(path): Added 'allTests' to \(names.joined(separator: ", ")).")
-	return names
-}
-*/
-
 extension ReadableStream {
 	func list() -> [String] {
 		let result = Array(lines())
@@ -94,44 +82,24 @@ func makeLinuxMainDotSwift(_ classnames: [String]) throws {
 	print("+ Tests/LinuxMain.swift")
 }
 
-/*
-func makeLinuxMainDotSwift(_ classnames: [String]) throws {
-	var result = "\nimport XCTest\n\n"
-	result += runAsync(bash: "cd Tests && ls -d *).stdout.list().map {dir in
-		"import " + String(dir.characters.dropLast()) + "\n"}.joined()
-	result += "\nlet tests: [XCTestCaseEntry] = [\n"
-	result += classnames.map { indentation + "testCase(\($0).allTests),\n" }.joined()
-	result += indentation + "]\n\n"
-	result += "XCTMain(tests)\n"
-	let file = try open(forWriting: "Tests/LinuxMain.swift", overwrite: true)
-	file.write(result)
-	print("+ Tests/LinuxMain.swift")
-}
-*/
-
 let arguments = Moderator()
 let overwrite = arguments.add(.option("o","overwrite", description: "Replace Tests/LinuxMain.swift if it already exists."))
 let dryrun = arguments.add(.option("d","dryrun", description: "Show what will happen without changing any files."))
 let projectdir = arguments.add(Argument<String?>
 	.singleArgument(name: "directory", description: "The project root directory")
 	.default("./")
-	.map { (folder:String) -> String in
-		let folder = URL(fileURLWithPath: folder, isDirectory: true)
-		guard Files.fileExists(atPath: folder.path) else {
-			throw ArgumentError(errormessage: "Project root directory \(folder.path) does not exist.")
+	.map { (rootpath:String) -> DirectoryPath in
+		let rootdir = try Directory(open: rootpath)
+		try rootdir.verifyContains("Package.swift")
+		guard	!(!overwrite.value && rootdir.contains("Tests/LinuxMain.swift")) else {
+			throw ArgumentError(errormessage: "\(rootdir.path)/Tests/LinuxMain.swift already exists. Use -o/--overwrite to replace it.")
 		}
-		guard Files.fileExists(atPath: folder.appendingPathComponent("Package.swift").path) else {
-			throw ArgumentError(errormessage: "Package.swift not found in directory \(folder.path)")
-		}
-		guard	!(!overwrite.value && Files.fileExists(atPath: folder.appendingPathComponent("Tests/LinuxMain.swift").path)) else {
-			throw ArgumentError(errormessage: folder.path+"/Tests/LinuxMain.swift already exists. Use -o/--overwrite to replace it.")
-		}
-		return folder.path
+		return rootdir.path
 	})
 
 do {
 	try arguments.parse()
-	main.currentdirectory = projectdir.value
+	DirectoryPath.current = projectdir.value
 
 	let testfiles = runAsync("find", "Tests", "-name", "*.swift").stdout.list().map(FilePath.init(_:))
 	guard !testfiles.isEmpty else { exit(errormessage: "Could not find any .swift files under \"Tests/*/\".") }
@@ -140,9 +108,3 @@ do {
 } catch {
 	exit(error)
 }
-
-/*
-guard let swiftfile = try main.arguments.first.map ({try open($0)}) else {
-	exit(errormessage: "Missing argument for swift file")
-}
-*/
