@@ -50,19 +50,12 @@ func makeAllTests(_ testclass: TestClass) -> String {
 func addAllTests(tofile path: FilePath) throws -> [String] {
 	let file = try path.edit()
 	let testclasses = getTestClasses(file)
-	guard !testclasses.isEmpty else { print("  \(path): Skipping, no test classes found."); return [] }
+	guard !testclasses.isEmpty else { print("  Tests/\(path): Skipping, no test classes found."); return [] }
 
 	testclasses.map(makeAllTests).forEach(file.write)
 	let names = testclasses.map {$0.classname}
-	print("+ \(path): Added 'allTests' to \(names.joined(separator: ", ")).")
+	print("+ Tests/\(path): Added 'allTests' to \(names.joined(separator: ", ")).")
 	return names
-}
-
-extension ReadableStream {
-	func list() -> [String] {
-		let result = Array(lines())
-		return (result.last?.isEmpty ?? false) ? Array(result.dropLast()) : result
-	}
 }
 
 func makeLinuxMainDotSwift(_ classnames: [String]) throws {
@@ -84,7 +77,7 @@ func makeLinuxMainDotSwift(_ classnames: [String]) throws {
 
 let arguments = Moderator()
 let overwrite = arguments.add(.option("o","overwrite", description: "Replace Tests/LinuxMain.swift if it already exists."))
-let dryrun = arguments.add(.option("d","dryrun", description: "Show what will happen without changing any files."))
+//let dryrun = arguments.add(.option("d","dryrun", description: "Show what will happen without changing any files."))
 let projectdir = arguments.add(Argument<String?>
 	.singleArgument(name: "directory", description: "The project root directory")
 	.default("./")
@@ -101,7 +94,7 @@ do {
 	try arguments.parse()
 	DirectoryPath.current = projectdir.value
 
-	let testfiles = runAsync("find", "Tests", "-name", "*.swift").stdout.list().map(FilePath.init(_:))
+	let testfiles = try Directory(open: "Tests").files("*/*.swift", recursive: true)
 	guard !testfiles.isEmpty else { exit(errormessage: "Could not find any .swift files under \"Tests/*/\".") }
 	let classnames = try testfiles.flatMap(addAllTests)
 	try makeLinuxMainDotSwift(classnames)
