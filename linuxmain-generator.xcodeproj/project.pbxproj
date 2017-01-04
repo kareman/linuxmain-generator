@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA8527D61E1D916600D89498 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8527D41E1D914800D89498 /* Errors.swift */; };
 		OBJ_41 /* Bash.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Bash.swift */; };
 		OBJ_42 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* Command.swift */; };
 		OBJ_43 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* Context.swift */; };
@@ -54,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BA8527D41E1D914800D89498 /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		OBJ_10 /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		OBJ_11 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		OBJ_12 /* FileHandle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHandle.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 		OBJ_22 /* FileSmith */ = {
 			isa = PBXGroup;
 			children = (
+				BA8527D41E1D914800D89498 /* Errors.swift */,
 				OBJ_23 /* Directory.swift */,
 				OBJ_24 /* File.swift */,
 				OBJ_25 /* General.swift */,
@@ -142,7 +145,7 @@
 				OBJ_27 /* Paths.swift */,
 			);
 			name = FileSmith;
-			path = "Packages/FileSmith-0.1.0-alpha/Sources";
+			path = "Packages/FileSmith-0.1.0-alpha.3/Sources";
 			sourceTree = SOURCE_ROOT;
 		};
 		OBJ_28 /* linuxmain-generator */ = {
@@ -172,7 +175,7 @@
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -180,7 +183,6 @@
 				OBJ_30 /* Tests */,
 				OBJ_31 /* Products */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_7 /* Sources */ = {
@@ -295,7 +297,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_31 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -342,6 +344,7 @@
 				OBJ_65 /* File.swift in Sources */,
 				OBJ_66 /* General.swift in Sources */,
 				OBJ_67 /* Lazy-split.swift in Sources */,
+				BA8527D61E1D916600D89498 /* Errors.swift in Sources */,
 				OBJ_68 /* Paths.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

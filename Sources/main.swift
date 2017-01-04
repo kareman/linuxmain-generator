@@ -67,7 +67,7 @@ extension ReadableStream {
 
 func makeLinuxMainDotSwift(_ classnames: [String]) throws {
 	let testdir = try Directory(open: "Tests")
-	let linuxmain = try testdir.add(file:"LinuxMain.swift", ifExists: .replace) // File
+	let linuxmain = try testdir.create(file:"LinuxMain.swift", ifExists: .replace)
 	let testdirs = testdir.directories()
 
 	var result = "\nimport XCTest\n\n"
