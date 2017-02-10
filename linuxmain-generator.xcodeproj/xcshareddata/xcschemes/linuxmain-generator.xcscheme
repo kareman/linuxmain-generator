@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0820"
+   LastUpgradeVersion = "9999"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,21 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_36"
-               BuildableName = "SwiftShell.framework"
-               BlueprintName = "SwiftShell"
-               ReferencedContainer = "container:linuxmain-generator.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_51"
+               BlueprintIdentifier = "OBJ_28"
                BuildableName = "Moderator.framework"
                BlueprintName = "Moderator"
                ReferencedContainer = "container:linuxmain-generator.xcodeproj">
@@ -42,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_59"
+               BlueprintIdentifier = "OBJ_36"
                BuildableName = "FileSmith.framework"
                BlueprintName = "FileSmith"
                ReferencedContainer = "container:linuxmain-generator.xcodeproj">
@@ -56,7 +42,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_70"
+               BlueprintIdentifier = "OBJ_51"
                BuildableName = "linuxmain-generator"
                BlueprintName = "linuxmain-generator"
                ReferencedContainer = "container:linuxmain-generator.xcodeproj">
@@ -87,9 +73,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "OBJ_36"
-            BuildableName = "SwiftShell.framework"
-            BlueprintName = "SwiftShell"
+            BlueprintIdentifier = "OBJ_28"
+            BuildableName = "Moderator.framework"
+            BlueprintName = "Moderator"
             ReferencedContainer = "container:linuxmain-generator.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
