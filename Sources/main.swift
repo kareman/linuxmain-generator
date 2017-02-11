@@ -76,7 +76,6 @@ func makeLinuxMainDotSwift(_ classnames: [String]) throws {
 
 let arguments = Moderator()
 let overwrite = arguments.add(.option("o","overwrite", description: "Replace Tests/LinuxMain.swift if it already exists."))
-//let dryrun = arguments.add(.option("d","dryrun", description: "Show what will happen without changing any files."))
 _ = arguments.add(Argument<String?>
 	.singleArgument(name: "directory", description: "The project root directory")
 	.default("./")
@@ -101,5 +100,5 @@ do {
 	try makeLinuxMainDotSwift(classnames)
 } catch {
 	WritableFile.stderror.print(error)
-	exit(EXIT_FAILURE)
+	exit(Int32(error._code))
 }
