@@ -83,7 +83,7 @@ _ = arguments.add(Argument<String?>
 		let projectdir = try Directory(open: projectpath)
 		try projectdir.verifyContains("Package.swift")
 		if !overwrite.value && projectdir.contains("Tests/LinuxMain.swift") {
-			throw ArgumentError(errormessage: "\(projectdir.path)/Tests/LinuxMain.swift already exists. Use -o/--overwrite to replace it.")
+			throw ArgumentError(errormessage: "\(projectpath == "./" ? "" : (projectdir.path.string + "/"))Tests/LinuxMain.swift already exists. Use -o/--overwrite to replace it.")
 		}
 		Directory.current = projectdir
 	})
