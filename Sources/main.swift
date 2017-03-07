@@ -47,13 +47,14 @@ func makeAllTests(_ testclass: TestClass) -> String {
 }
 
 func addAllTests(tofile path: FilePath) throws -> [String] {
+	let path = path.relativeTo(DirectoryPath.current) // to get correct output when printing the path.
 	let testclasses = getTestClasses(try path.open())
-	guard !testclasses.isEmpty else { print("  Tests/\(path): Skipping, no test classes found."); return [] }
+	guard !testclasses.isEmpty else { print("  \(path): Skipping, no test classes found."); return [] }
 
 	let file = try path.edit()
 	testclasses.map(makeAllTests).forEach(file.write)
 	let names = testclasses.map {$0.classname}
-	print("+ Tests/\(path): Added 'allTests' to \(names.joined(separator: ", ")).")
+	print("+ \(path): Added 'allTests' to \(names.joined(separator: ", ")).")
 	return names
 }
 

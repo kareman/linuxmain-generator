@@ -5,5 +5,5 @@ let package = Package(
 )
 
 package.dependencies.append(.Package(url: "https://github.com/kareman/Moderator", "0.4.0-beta"))
-package.dependencies.append(.Package(url: "https://github.com/kareman/FileSmith", "0.1.2"))
+package.dependencies.append(.Package(url: "https://github.com/kareman/FileSmith", "0.1.3"))
 

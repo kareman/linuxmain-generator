@@ -33,28 +33,28 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		BAB70E2F1E6F441F00319797 /* PBXContainerItemProxy */ = {
+		BAB70E331E6F7BC500319797 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = OBJ_39;
 			remoteInfo = Moderator;
 		};
-		BAB70E301E6F441F00319797 /* PBXContainerItemProxy */ = {
+		BAB70E341E6F7BC500319797 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = OBJ_47;
 			remoteInfo = SwiftShell;
 		};
-		BAB70E311E6F441F00319797 /* PBXContainerItemProxy */ = {
+		BAB70E351E6F7BC500319797 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = OBJ_62;
 			remoteInfo = FileSmith;
 		};
-		BAB70E321E6F441F00319797 /* PBXContainerItemProxy */ = {
+		BAB70E361E6F7BC500319797 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
@@ -171,7 +171,7 @@
 				OBJ_30 /* SymbolicLinks.swift */,
 			);
 			name = FileSmith;
-			path = "Packages/FileSmith-0.1.2/Sources";
+			path = "Packages/FileSmith-0.1.3/Sources";
 			sourceTree = SOURCE_ROOT;
 		};
 		OBJ_31 /* linuxmain-generator */ = {
@@ -386,22 +386,22 @@
 		OBJ_76 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = OBJ_47 /* SwiftShell */;
-			targetProxy = BAB70E321E6F441F00319797 /* PBXContainerItemProxy */;
+			targetProxy = BAB70E361E6F7BC500319797 /* PBXContainerItemProxy */;
 		};
 		OBJ_87 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = OBJ_39 /* Moderator */;
-			targetProxy = BAB70E2F1E6F441F00319797 /* PBXContainerItemProxy */;
+			targetProxy = BAB70E331E6F7BC500319797 /* PBXContainerItemProxy */;
 		};
 		OBJ_88 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = OBJ_47 /* SwiftShell */;
-			targetProxy = BAB70E301E6F441F00319797 /* PBXContainerItemProxy */;
+			targetProxy = BAB70E341E6F7BC500319797 /* PBXContainerItemProxy */;
 		};
 		OBJ_89 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = OBJ_62 /* FileSmith */;
-			targetProxy = BAB70E311E6F441F00319797 /* PBXContainerItemProxy */;
+			targetProxy = BAB70E351E6F7BC500319797 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
