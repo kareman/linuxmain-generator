@@ -73,7 +73,7 @@ func makeLinuxMainDotSwift(testdir: Directory, classnames: [String]) throws {
 	print("+ \(testdir.path)/LinuxMain.swift")
 }
 
-let arguments = Moderator()
+let arguments = Moderator(description: "Automatically add code to Swift Package Manager projects to run unit tests on Linux.")
 let overwrite = arguments.add(.option("o","overwrite", description: "Replace <test directory>/LinuxMain.swift if it already exists."))
 let testdirarg = arguments.add(Argument<String>
 	.optionWithValue("testdir", name: "test directory", description: "The path to the directory with the unit tests.")
