@@ -47,7 +47,7 @@ func makeAllTests(_ testclass: TestClass) -> String {
 }
 
 func addAllTests(tofile path: FilePath) throws -> [String] {
-	let path = path.relativeTo(DirectoryPath.current) // to get correct output when printing the path.
+	let path = path.relativeTo(.current) // to get correct output when printing the path.
 	let testclasses = getTestClasses(try path.open())
 	guard !testclasses.isEmpty else { print("  \(path): Skipping, no test classes found."); return [] }
 
@@ -76,7 +76,7 @@ func makeLinuxMainDotSwift(testdir: Directory, classnames: [String]) throws {
 
 let arguments = Moderator(description: "Automatically add code to Swift Package Manager projects to run unit tests on Linux.")
 let overwrite = arguments.add(.option("o","overwrite", description: "Replace <test directory>/LinuxMain.swift if it already exists."))
-let testdirarg = arguments.add(Argument<String>
+let testdirarg = arguments.add(Argument<String?>
 	.optionWithValue("testdir", name: "test directory", description: "The path to the directory with the unit tests.")
 	.default("Tests"))
 _ = arguments.add(Argument<String?>
