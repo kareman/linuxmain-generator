@@ -90,7 +90,6 @@ _ = arguments.add(Argument<String?>
 
 do {
 	try arguments.parse(strict: true)
-	print(arguments.usagetext)
 
 	let testdir = try Directory(open: testdirarg.value)
 	if !overwrite.value && testdir.contains("LinuxMain.swift") {
