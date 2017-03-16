@@ -14,6 +14,21 @@ Usage: linuxmain-generator
       The project root directory. Default = './'.
 ```
 
+## Installation
+
+### Homebrew
+```bash
+brew install kareman/repo/linuxmain-generator
+```
+
+### Manual
+```bash
+git clone https://github.com/kareman/linuxmain-generator
+cd linuxmain-generator
+swift build -c release
+cp .build/release/linuxmain-generator /usr/local/bin/linuxmain-generator
+```
+
 ## License
 
 Released under the MIT License (MIT), http://opensource.org/licenses/MIT
