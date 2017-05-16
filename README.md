@@ -19,14 +19,17 @@ Usage: linuxmain-generator
 ## Installation
 
 ### Homebrew
+
 ```bash
-brew install kareman/repo/linuxmain-generator
+brew tap valeriomazzeo/linuxmain-generator
+brew install linuxmain-generator
 ```
 
 ### Manual
+
 ```bash
-git clone https://github.com/kareman/linuxmain-generator
-cd linuxmain-generator
+git clone https://github.com/valeriomazzeo/homebrew-linuxmain-generator
+cd homebrew-linuxmain-generator
 swift build -c release
 cp .build/release/linuxmain-generator /usr/local/bin/linuxmain-generator
 ```
@@ -35,5 +38,4 @@ cp .build/release/linuxmain-generator /usr/local/bin/linuxmain-generator
 
 Released under the MIT License (MIT), http://opensource.org/licenses/MIT
 
-Kåre Morstøl, [NotTooBad Software](http://nottoobadsoftware.com)
-
+Originally forked from https://github.com/kareman/linuxmain-generator
