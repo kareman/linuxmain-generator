@@ -2,7 +2,7 @@
 
 # linuxmain-generator
 
-Automatically adds code to Swift Package Manager projects to run unit tests on Linux.
+Automatically add code to Swift Package Manager projects to run unit tests on Linux.
 
 ```text
 Usage: linuxmain-generator
@@ -13,6 +13,8 @@ Usage: linuxmain-generator
   <directory>:
       The project root directory. Default = './'.
 ```
+
+_This project exists mainly to demonstrate the usage of the [FileSmith](https://github.com/kareman/FileSmith) and [Moderator](https://github.com/kareman/Moderator) projects. Check out [valeriomazzeo/linuxmain-generator](https://github.com/kareman/Moderator) for more features._
 
 ## Installation
 
