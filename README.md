@@ -14,7 +14,7 @@ Usage: linuxmain-generator
       The project root directory. Default = './'.
 ```
 
-_This project exists mainly to demonstrate the usage of the [FileSmith](https://github.com/kareman/FileSmith) and [Moderator](https://github.com/kareman/Moderator) projects. Check out [valeriomazzeo/linuxmain-generator](https://github.com/kareman/Moderator) for more features._
+_This project exists mainly to demonstrate the usage of the [FileSmith](https://github.com/kareman/FileSmith) and [Moderator](https://github.com/kareman/Moderator) projects. Check out [valeriomazzeo/linuxmain-generator](https://github.com/valeriomazzeo/linuxmain-generator) for more features._
 
 ## Installation
 
