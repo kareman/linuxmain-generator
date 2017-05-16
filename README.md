@@ -8,6 +8,8 @@ Automatically adds code to Swift Package Manager projects to run unit tests on L
 Usage: linuxmain-generator
   -o,--overwrite:
       Replace <test directory>/LinuxMain.swift if it already exists.
+  -c,--checkOnly:
+      Do not modify any file. Exits with 0 if test cases are in sync, otherwise exits with 1.
   --testdir <test directory>:
       The path to the directory with the unit tests. Default = 'Tests'.
   <directory>:
