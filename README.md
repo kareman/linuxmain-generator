@@ -8,6 +8,8 @@ Automatically add code to Swift Package Manager projects to run unit tests on Li
 Usage: linuxmain-generator
   -o,--overwrite:
       Replace <test directory>/LinuxMain.swift if it already exists.
+  -c,--checkOnly:
+      Do not modify any file. Exits with 0 if test cases are in sync, otherwise exits with 1.
   --testdir <test directory>:
       The path to the directory with the unit tests. Default = 'Tests'.
   <directory>:
@@ -19,14 +21,17 @@ _This project exists mainly to demonstrate the usage of the [FileSmith](https://
 ## Installation
 
 ### Homebrew
+
 ```bash
-brew install kareman/repo/linuxmain-generator
+brew tap valeriomazzeo/linuxmain-generator
+brew install linuxmain-generator
 ```
 
 ### Manual
+
 ```bash
-git clone https://github.com/kareman/linuxmain-generator
-cd linuxmain-generator
+git clone https://github.com/valeriomazzeo/homebrew-linuxmain-generator
+cd homebrew-linuxmain-generator
 swift build -c release
 cp .build/release/linuxmain-generator /usr/local/bin/linuxmain-generator
 ```
@@ -35,5 +40,4 @@ cp .build/release/linuxmain-generator /usr/local/bin/linuxmain-generator
 
 Released under the MIT License (MIT), http://opensource.org/licenses/MIT
 
-Kåre Morstøl, [NotTooBad Software](http://nottoobadsoftware.com)
-
+Originally forked from https://github.com/kareman/linuxmain-generator
